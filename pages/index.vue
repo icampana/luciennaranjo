@@ -3,7 +3,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue'
 
-export default Vue.extend({})
+export default defineComponent({
+  name: 'MainApp',
+  components: {
+    Main: () => import('../components/Main.vue')
+  }
+})
 </script>

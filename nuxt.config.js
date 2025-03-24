@@ -1,4 +1,6 @@
-export default {
+import { defineNuxtConfig } from 'nuxt/config';
+
+export default defineNuxtConfig({
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -19,10 +21,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
-    script: [
-      { hid: 'popper', src: 'https://unpkg.com/popper.js@1/dist/umd/popper.min.js', defer: false },
-      { hid: 'tippy', src: 'https://unpkg.com/tippy.js@4', defer: false }
     ]
   },
 
@@ -37,24 +35,25 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-analytics'
-  ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-gtag'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
 
-  googleAnalytics: {
+  typescript: {
+    typeCheck: true
+  },
+
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+  },
+
+  gtag: {
     id: 'UA-61659917-1'
-  }
-}
+  },
+
+  compatibilityDate: '2025-03-24'
+})
